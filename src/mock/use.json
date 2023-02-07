@@ -1,0 +1,29 @@
+[
+  {
+    "consignee": "路飞",
+    "fullAddress": "加拿大",
+    "id": 1361,
+    "isDefault": "0",
+    "phoneNum": "1577****246",
+    "userAddress": "北京",
+    "userId": 2
+  },
+  {
+    "consignee": "山治",
+    "fullAddress": "英国",
+    "id": 1362,
+    "isDefault": "1",
+    "phoneNum": "1577****246",
+    "userAddress": "北京",
+    "userId": 3
+  },
+  {
+    "consignee": "索隆",
+    "fullAddress": "日本",
+    "id": 1363,
+    "isDefault": "0",
+    "phoneNum": "1577****246",
+    "userAddress": "北京",
+    "userId": 3
+  }
+]

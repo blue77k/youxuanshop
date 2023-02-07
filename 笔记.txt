@@ -1,0 +1,135 @@
+## 项目知识点
+
+<[(10条消息) Vue笔记【尚品汇项目】_java亮小白1997的博客-CSDN博客](https://blog.csdn.net/javaScript1997/article/details/123170899?spm=1001.2101.3001.6650.13&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13-123170899-blog-121684101.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-13-123170899-blog-121684101.pc_relevant_paycolumn_v3&utm_relevant_index=14)>
+
+### 1.路由
+
+**路由组件和非路由组件的区别**
+
+- 路由组件一般放在pages|views文件夹里面，非路由组件一般放在components文件夹中。
+- 路由组件一般子啊router文件夹中注册，非路由组件一般是以标签的形式使用
+- 注册完路由，所有组件上面都有￥router,和￥route属性
+
+
+
+￥route：（路由信息对象）一般获取路由信息【路径，query，params】等
+
+￥router：（路由实例）一般进行编程式导航进入路由跳转【push|replace】
+
+
+
+**路由的跳转**
+
+- 声明式导航：router-link，进行路由跳转
+- 编程式导航：可以进行路由跳转
+
+
+
+**声明式导航能做的，编程式都能做，而且他除了进行路由跳转，还可以进行其他业务逻辑**
+
+---
+
+
+
+#### 1.1 路由传参的面试题
+
+1. **路由传参有三种形式：**
+
+     - 字符串形式
+     - 模板字符串
+     - 对象（最常用）
+
+```js
+this.$route.push({name:"serach",params:{keywords:this.keyword},query:{k:this.keyword.toUpperCase()}})
+```
+
+2. **路由传递参数(对象写法)path是否可以结合params参数一起使用**
+
+​    不可，想要传递param参数的时候，必须使用name的属性，path路径会报错
+
+3. **如何指定params参数可传可不传？**
+
+   如果路由要求传递params参数，但是你就不传递params参数，会导致URL出现问题；
+            可在配置路由的时候，在占位的后面加上一个问号【params可以传递或者不传递】;
+
+```js
+   path:'/search/:keyword?',
+```
+
+
+
+4. **params参数可以传递也可以不传递,但是如果传递是空串,如何解决？**
+
+```js
+this.$router.push({name:"search",params:{keyword:''||undefined},query:{k:this.keyword.toUpperCase()}})
+```
+
+5. **路由组件能不能传递props数据？**
+
+  可以，但是几乎不使用这个方法，很鸡肋
+
+- 布尔值写法:params
+
+​            **props:true,**
+
+- 对象写法：额外的给路由组件传递一些props
+
+​          **props:{a:1,b:2},**
+
+- 函数写法：可以params参数、query参数,通过props传递给路由组件
+
+​          **props:($route)=>({keyword:$route.params.keyword,k:$route.query.k})**
+
+6. **编程式路由跳转到当前路由（参数不变），多次执行抛出错误，怎么解决**
+
+​           这个问题只存在于编程式路由，**声明式路由在底层的Vue-router已经声明好！！！**
+
+​      出现这个问题的原因也是因为vue-router最新版本引入**了promise**，因为没给传参，所以报错，虽然报错，但是不影响程序的正常使用。
+
+- **治标不治本的方法**（修改底层代码）
+
+```js
+this.$router.push({name:"search",params:{keyword:this.keyword},query:{k:this.keyword.toUpperCase()},()=>{},()=>{}});
+
+```
+
+**添加了成功执行的回调，和失败执行的回调**   便解决了问题
+
+- 重写push
+
+```js
+//第一个参数:原来push方法,你在哪里跳转(传递哪些参数)
+VueRouter.prototype.push = function(location,resolve,reject){
+	if(resolve && reject){
+		originPush.call(this,location,resolve,reject);
+	}else{
+		originPush.call(this,location,()=>{},()=>{});
+	}
+}
+VueRouter.prototype.replace = function(location,resolve,reject){
+	if(resolve && reject){
+		originReplace.call(this,location,resolve,reject);
+	}else{
+		originReplace.call(this,location,()=>{},()=>{});
+	}
+}
+
+```
+
+​     **使用call方法，继承原来的方法，并进一步进行封装**
+
+7. **call 和 apply的区别**
+
+- 相同点： 都可以调用函数一次，都可以篡改函数的上下文
+- 不同点：call传递参数用逗号分开，aplly方法第二个开始，便用数组的形式。
+
+---
+
+### 2.防抖和节流
+
+节流： 在规定的时间范围内不会重复触发回调，只有大于这个时间间隔才会触发回调。
+
+防抖：前面的所有触发都被取消，最后一次在规定的时间之后才会被触发，也就是说即使是连续触发，也只会指向一次。
+
+----
+

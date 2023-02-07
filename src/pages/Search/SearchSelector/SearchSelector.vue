@@ -1,271 +1,192 @@
 <template>
   <div class="clearfix selector">
     <div class="type-wrap logo">
-      <div class="fl key brand">品牌</div>
+      <div class="fl key brand">
+        <h1>品牌</h1>
+      </div>
       <div class="value logos">
+        <!-- 品牌地方 -->
         <ul class="logo-list">
-          <li>索尼（SONY）</li>
-          <li>TCL</li>
-          <li>长虹（CHANGHONG）</li>
-          <li>飞利浦（PHILIPS）</li>
-          <li>风行电视</li>
-          <li><img src="./images/phone06.png" /></li>
-          <li><img src="./images/phone07.png" /></li>
-          <li><img src="./images/phone08.png" /></li>
-          <li><img src="./images/phone09.png" /></li>
-          <li><img src="./images/phone10.png" /></li>
-          <li><img src="./images/phone11.png" /></li>
-          <li><img src="./images/phone12.png" /></li>
-          <li><img src="./images/phone12.png" /></li>
-          <li><img src="./images/phone14.png" /></li>
-          <li><img src="./images/phone01.png" /></li>
-          <li><img src="./images/phone06.png" /></li>
-          <li><img src="./images/phone07.png" /></li>
-          <li><img src="./images/phone02.png" /></li>
+          <li
+            v-for="(trademark, index) in trademarkList"
+            :key="trademark.tmId"
+            @click="tradeMatkHandler(trademark)"
+          >
+            {{ trademark.tmName }}
+          </li>
         </ul>
       </div>
-      <div class="ext">
-        <a href="javascript:void(0);" class="sui-btn">多选</a>
-        <a href="javascript:void(0);">更多</a>
-      </div>
     </div>
-    <div class="type-wrap">
-      <div class="fl key">网络制式</div>
+    <!-- 平台售卖属性的地方 -->
+    <div
+      class="type-wrap"
+      v-for="(attr, index) in attrsList"
+      :key="attr.attrId"
+    >
+      <!-- 平台售卖属性:比如说颜色 -->
+      <div class="fl key">{{ attr.attrName }}</div>
       <div class="fl value">
         <ul class="type-list">
-          <li>
-            <a>GSM（移动/联通2G）</a>
-          </li>
-          <li>
-            <a>电信2G</a>
-          </li>
-          <li>
-            <a>电信3G</a>
-          </li>
-          <li>
-            <a>移动3G</a>
-          </li>
-          <li>
-            <a>联通3G</a>
-          </li>
-          <li>
-            <a>联通4G</a>
-          </li>
-          <li>
-            <a>电信3G</a>
-          </li>
-          <li>
-            <a>移动3G</a>
-          </li>
-          <li>
-            <a>联通3G</a>
-          </li>
-          <li>
-            <a>联通4G</a>
+          <!-- 平台相应售卖的属性的属性值:粉色，蓝色，黑色... -->
+          <li
+            v-for="(attrValue, index) in attr.attrValueList"
+            :key="attrValue"
+            @click="attrInfo(attr, attrValue)"
+          >
+            <a>{{ attrValue }}</a>
           </li>
         </ul>
       </div>
       <div class="fl ext"></div>
-    </div>
-    <div class="type-wrap">
-      <div class="fl key">显示屏尺寸</div>
-      <div class="fl value">
-        <ul class="type-list">
-          <li>
-            <a>4.0-4.9英寸</a>
-          </li>
-          <li>
-            <a>4.0-4.9英寸</a>
-          </li>
-        </ul>
-      </div>
-      <div class="fl ext"></div>
-    </div>
-    <div class="type-wrap">
-      <div class="fl key">摄像头像素</div>
-      <div class="fl value">
-        <ul class="type-list">
-          <li>
-            <a>1200万以上</a>
-          </li>
-          <li>
-            <a>800-1199万</a>
-          </li>
-          <li>
-            <a>1200-1599万</a>
-          </li>
-          <li>
-            <a>1600万以上</a>
-          </li>
-          <li>
-            <a>无摄像头</a>
-          </li>
-        </ul>
-      </div>
-      <div class="fl ext"></div>
-    </div>
-    <div class="type-wrap">
-      <div class="fl key">价格</div>
-      <div class="fl value">
-        <ul class="type-list">
-          <li>
-            <a>0-500元</a>
-          </li>
-          <li>
-            <a>500-1000元</a>
-          </li>
-          <li>
-            <a>1000-1500元</a>
-          </li>
-          <li>
-            <a>1500-2000元</a>
-          </li>
-          <li>
-            <a>2000-3000元 </a>
-          </li>
-          <li>
-            <a>3000元以上</a>
-          </li>
-        </ul>
-      </div>
-      <div class="fl ext">
-      </div>
-    </div>
-    <div class="type-wrap">
-      <div class="fl key">更多筛选项</div>
-      <div class="fl value">
-        <ul class="type-list">
-          <li>
-            <a>特点</a>
-          </li>
-          <li>
-            <a>系统</a>
-          </li>
-          <li>
-            <a>手机内存 </a>
-          </li>
-          <li>
-            <a>单卡双卡</a>
-          </li>
-          <li>
-            <a>其他</a>
-          </li>
-        </ul>
-      </div>
-      <div class="fl ext">
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'SearchSelector',
-  }
+import { mapGetters } from "vuex";
+export default {
+  name: "SearchSelector",
+  computed: {
+    ...mapGetters(["trademarkList", "attrsList"]),
+  },
+  methods: {
+    //品牌的事件处理函数
+    tradeMatkHandler(trademark) {
+      //点击了品牌（苹果），还是需要整理参数，向服务器发请求获取相应的数据进行展示
+      //老师问题：在那个组件中发请求，父组件?
+      //为什么那,因为父组件中searchParams参数是带给服务器参数，
+      // 子组件组件把你点击的品牌的信息，
+      // 需要给父组件传递过去---自定义事件
+      this.$emit("trademarkInfo", trademark);
+    },
+    //平台售卖属性值的点击事件
+    attrInfo(attr, attrValue) {
+      //["属性ID:属性值:属性名"]
+      this.$emit("attrInfo", attr, attrValue);
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
-  .selector {
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
+.selector {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+
+  .logo {
+    border-top: 0;
+    margin: 0;
+    position: relative;
     overflow: hidden;
 
-    .logo {
-      border-top: 0;
-      margin: 0;
-      position: relative;
-      overflow: hidden;
+    .key {
+      padding-bottom: 87px !important;
+    }
+  }
 
-      .key {
-        padding-bottom: 87px !important;
+  .type-wrap {
+    margin: 0;
+    position: relative;
+    border-top: 1px solid #ddd;
+    overflow: hidden;
+
+    .key {
+      display: flex;
+      align-items: center;
+      width: 100px;
+      background: #eff2f2;
+      color: rgb(122, 122, 122);
+      line-height: 29px;
+      text-align: right;
+      justify-content: end;
+      padding: 10px 10px 0 15px;
+      float: left;
+
+      font-weight: 700;
+    }
+
+    .value {
+      overflow: hidden;
+      padding: 10px 0 0 15px;
+      color: #333;
+      margin-left: 120px;
+      padding-right: 90px;
+
+      .logo-list {
+        li {
+          border-radius: 12px;
+          float: left;
+          border: 1px solid #e4e4e4;
+          margin: -1px -1px 0 0;
+          width: 100px;
+          height: 52px;
+          text-align: center;
+          line-height: 52px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-weight: 700;
+          color: #e1251b;
+          font-style: italic;
+          font-size: 14px;
+          margin-left: 10px;
+          margin-bottom: 5px;
+          &:hover{
+             background-color: #f50202;
+             color: #fff;
+             cursor: pointer;
+          }
+          img {
+            max-width: 100%;
+            vertical-align: middle;
+
+          }
+        }
+      }
+
+      .type-list {
+        li {
+          float: left;
+          display: block;
+          margin-right: 30px;
+          line-height: 26px;
+
+          a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 700;
+          }
+        }
       }
     }
 
-    .type-wrap {
-      margin: 0;
-      position: relative;
-      border-top: 1px solid #ddd;
-      overflow: hidden;
+    .ext {
+      position: absolute;
+      top: 10px;
+      right: 10px;
 
-      .key {
-        width: 100px;
-        background: #f1f1f1;
-        line-height: 26px;
-        text-align: right;
-        padding: 10px 10px 0 15px;
-        float: left;
+      .sui-btn {
+        display: inline-block;
+        padding: 2px 14px;
+        box-sizing: border-box;
+        margin-bottom: 0;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        padding: 0 10px;
+        background: #fff;
+        border: 1px solid #d5d5d5;
       }
 
-      .value {
-        overflow: hidden;
-        padding: 10px 0 0 15px;
-        color: #333;
-        margin-left: 120px;
-        padding-right: 90px;
-
-        .logo-list {
-          li {
-            float: left;
-            border: 1px solid #e4e4e4;
-            margin: -1px -1px 0 0;
-            width: 105px;
-            height: 52px;
-            text-align: center;
-            line-height: 52px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-weight: 700;
-            color: #e1251b;
-            font-style: italic;
-            font-size: 14px;
-
-            img {
-              max-width: 100%;
-              vertical-align: middle;
-            }
-          }
-        }
-
-        .type-list {
-          li {
-            float: left;
-            display: block;
-            margin-right: 30px;
-            line-height: 26px;
-
-            a {
-              text-decoration: none;
-              color: #666;
-            }
-          }
-        }
-      }
-
-      .ext {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-
-        .sui-btn {
-          display: inline-block;
-          padding: 2px 14px;
-          box-sizing: border-box;
-          margin-bottom: 0;
-          font-size: 12px;
-          line-height: 18px;
-          text-align: center;
-          vertical-align: middle;
-          cursor: pointer;
-          padding: 0 10px;
-          background: #fff;
-          border: 1px solid #d5d5d5;
-        }
-
-        a {
-          color: #666;
-        }
+      a {
+        color: #666;
       }
     }
   }
+}
 </style>

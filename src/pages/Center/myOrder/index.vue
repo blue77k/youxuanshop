@@ -2,7 +2,7 @@
   <div class="order-right">
     <div class="order-content">
       <div class="title">
-        <h3>我的订单</h3>
+        <h2>首页 <i class="el-icon-arrow-right"></i><span> 我的订单</span></h2>
       </div>
       <div class="chosetype">
         <table>
@@ -22,7 +22,7 @@
         <!-- 每一笔订单 -->
         <table
           class="order-item"
-          v-for="(order, index) in myOrder.records"
+          v-for="order in myOrder.records"
           :key="order.id"
         >
           <thead>
@@ -41,7 +41,7 @@
             <tr v-for="(cart, index) in order.orderDetailList" :key="cart.id">
               <td width="60%">
                 <div class="typographic">
-                  <img :src="cart.imgUrl" style="width:100px;height:100px" />
+                  <img :src="cart.imgUrl" style="width: 100px; height: 100px" />
                   <a href="#" class="block-text">{{ cart.skuName }}</a>
                   <span>x{{ cart.skuNum }}</span>
                   <a href="#" class="service">售后申请</a>
@@ -103,56 +103,17 @@
     </div>
     <!--猜你喜欢-->
     <div class="like">
-      <h4 class="kt">猜你喜欢</h4>
-      <ul class="like-list">
-        <li class="likeItem">
-          <div class="p-img">
-            <img src="../images/itemlike01.png" />
-          </div>
-          <div class="attr">
-            <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
-          </div>
-          <div class="price">
-            <em>¥</em>
-            <i>3699.00</i>
-          </div>
-          <div class="commit">已有6人评价</div>
-        </li>
-        <li class="likeItem">
-          <div class="p-img">
-            <img src="../images/itemlike02.png" />
-          </div>
-          <div class="attr">
-            Apple苹果iPhone 6s/6s Plus 16G 64G 128G
-          </div>
-          <div class="price">
-            <em>¥</em>
-            <i>4388.00</i>
-          </div>
-          <div class="commit">已有700人评价</div>
-        </li>
-        <li class="likeItem">
-          <div class="p-img">
-            <img src="../images/itemlike03.png" />
-          </div>
-          <div class="attr">DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</div>
-          <div class="price">
-            <em>¥</em>
-            <i>4088.00</i>
-          </div>
-          <div class="commit">已有700人评价</div>
-        </li>
-        <li class="likeItem">
-          <div class="p-img">
-            <img src="../images/itemlike04.png" />
-          </div>
-          <div class="attr">DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</div>
-          <div class="price">
-            <em>¥</em>
-            <i>4088.00</i>
-          </div>
-          <div class="commit">已有700人评价</div>
-        </li>
+      <h1 class="kt"><i class="el-icon-sell"></i> 猜你喜欢</h1>
+    
+      <ul class="bb">
+        <li><a href=""><img src="../images/11.jpg" alt=""><p>Apple iPhone14  （A2884）<br>iphone14全网通 5G手机 午夜色 128G </p><p class="price">$1999</p></a></li>
+        <li><a href=""><img src="../images/14.jpg" alt=""><p>
+          Apple iPhone 14 Pro Max (A2896) 256GB 暗紫色 支持移动联通电信5G 双卡 
+        </p><p class="price">$6993</p></a></li>
+        <li><a href=""><img src="../images/h.jpg" alt=""><p>浪莎丝袜女超薄性感黑丝显瘦刺青提花纯欲风长筒打底连裤袜 富贵猫</p><p class="price">***</p></a></li>
+        <li><a href=""><img src="../images/gd.jpg" alt=""> <p>
+          BANDAI万代高达Gundam拼插拼装模型玩具 HIRM零式飞翼EW新年礼物
+        </p><p class="price">$199</p></a></li>
       </ul>
     </div>
   </div>
@@ -160,6 +121,7 @@
 
 <script>
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "",
   data() {
     return {
@@ -187,11 +149,11 @@ export default {
       }
     },
     //获取当前点击那一页
-    getPageNo(page){
-       //修改组件响应式数据page
-       this.page = page;
-       this.getData();
-    }
+    getPageNo(page) {
+      //修改组件响应式数据page
+      this.page = page;
+      this.getData();
+    },
   },
 };
 </script>

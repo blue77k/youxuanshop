@@ -1,0 +1,30 @@
+{
+  "active": 0,
+  "totalAmount": 255555,
+  "totalNum": 5,
+  "tradeNo": "dsfsdvsdvsdsd4663",
+  "orderId": "65486412654635.2156341",
+  "detailArrayList": [
+    {
+      "skuId": "ekee",
+      "skuNum": 1,
+      "sourceId": 5423,
+      "sourceType": "QERR",
+      "orderPrice": 7193,
+      "imgUrl": "https://tse1-mm.cn.bing.net/th/id/R-C.115c9efeadafa5c9e4b453e3678dd358?rik=Il4tDhdtpqZYAw&riu=http%3a%2f%2fcdn.bapiw.com%2fwp-content%2fuploads%2fjp%2f2017-02-09%2f23209.jpg&ehk=3up6EApl99eDHluJHeAWMFf9h6FXooVyAlqsSDu%2b%2bTs%3d&risl=&pid=ImgRaw&r=0"
+
+    },
+    {
+      "skuId": "eksd",
+      "skuNum": 1,
+      "sourceId": 5473,
+      "sourceType": "QERR",
+      "orderPrice": 12181,
+      "imgUrl": "https://pic3.zhimg.com/v2-b22ff68467e766e5a77ad1217cbdf96e_r.jpg"
+    }
+  ]
+
+
+}
+
+
