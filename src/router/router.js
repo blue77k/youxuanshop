@@ -14,6 +14,7 @@ import MyOrder from "@/pages/Center/myOrder";
 import Plus from "@/pages/Plus";
 import Box from "@/pages/Box";
 import Lz from "@/pages/Lz"
+import Purchase from "@/pages/Purchase"
 export default [
   {
     path: "/center",
@@ -34,6 +35,11 @@ export default [
   {
     path: "/plus",
     component: Plus,
+    meta: { show: true },
+  },
+  {
+    path: "/purchase",
+    component: Purchase,
     meta: { show: true },
   },
   {

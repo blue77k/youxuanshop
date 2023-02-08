@@ -23,8 +23,8 @@
           <router-link to="/center/myorder">我的订单</router-link>
           <router-link to="/shopcart">我的购物车</router-link>
           <router-link to="/plus">优选购会员</router-link>
-           <router-link to="/box">企业采购</router-link>
-           <router-link to="/lz">商务合作</router-link>
+           <router-link to="/purchase">企业采购</router-link>
+           <router-link to="/box">公共采购</router-link>
           <a href="###" class="jjk"><el-button type="text" @click="dialogVisible = true">靓仔网站</el-button>
             <el-dialog
   title="如需浏览请扫码支付"
@@ -36,7 +36,7 @@
  
    <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+    <el-button type="primary" @click="dialogVisible = false"><router-link to="/lz">支付</router-link></el-button>
   </span>
 </el-dialog></a>
           <a href="https://xiaofanzhou-code.github.io/test/" target="_blank" >商家后台</a>

@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <h2><span>首页</span> <i class="el-icon-arrow-right"></i> 购物车</h2>
+    <h2><router-link to="/home">首页</router-link> <i class="el-icon-arrow-right"></i> 购物车</h2>
     <div class="cart-main">
       <div class="cart-th">
         <div class="cart-th1">全部</div>

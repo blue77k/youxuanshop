@@ -138,10 +138,11 @@ export default {
        color: #e7066f;
         border-radius: 10px;
         flex: 4;
+        transition: all 0.6s linear;
         background-color: rgba(0, 0, 0, 0.1);
         margin: 0 20px;
         &:hover{
-          transition: all 1s linear;
+          transition: all 0.6s linear;
           background-color: rgba(0, 0, 0, 0.7);
           // background: url(./images/gd.jpg) no-repeat ;
          

@@ -128,6 +128,7 @@ export default {
       position: relative;
       padding: 20px;
       h1 {
+        font-family: 'STXinwei';
         text-align: center;
         color: #000;
         font-size: 30px;

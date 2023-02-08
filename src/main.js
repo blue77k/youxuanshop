@@ -8,6 +8,7 @@ import *as echarts from 'echarts'
 import TypeNav from "@/components/TypeNav";
 import Carsousel from "@/components/Carousel";
 import Pagination from "@/components/Pagination";
+import "animate.css";
  
 //element-ui注册
 Vue.use(ElementUI);

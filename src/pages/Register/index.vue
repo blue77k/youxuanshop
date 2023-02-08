@@ -180,8 +180,9 @@ export default {
       padding-top: 40px;
      
       h1 {
+        font-family: 'STXinwei';
         text-align: center;
-        font-size: 20px;
+        font-size: 30px;
         margin-bottom: 20px;
       }
       .content {

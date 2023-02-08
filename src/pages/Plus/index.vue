@@ -5,11 +5,11 @@
       <div class="right">
         <span> <i class="el-icon-menu"></i> PLUS会员首页</span>
         <span class="kk">PLUS权益</span>
-      </div>
+      </div> 
     </div>
     <div class="container">
-      <transition name="hello" enter-active-class="animate__bounceIn" appear>
-        <h1>PLUS会员 享专属特权</h1>
+      <transition name="hello"   appear>
+        <h1 class="animate__animated animate__tada">PLUS会员 享专属特权</h1>
       </transition>
       <p>尊敬的等等zkew，根据您最近一年的消费情况</p>
       <h2>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import "animate.css";
+ 
 export default {
   name: "PLUS",
   data() {
@@ -149,8 +149,15 @@ export default {
       }
     }
     .btn {
+   
+
       color: #2e3244;
       background-color: #e0b44f;
+
+      &:hover{
+        transform: scale(1.05);
+        transition: all 0.2s linear;
+      }
       b {
         font-weight: 700;
         font-size: 25px;

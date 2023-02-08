@@ -2,7 +2,9 @@
   <div class="order-right">
     <div class="order-content">
       <div class="title">
-        <h2>首页 <i class="el-icon-arrow-right"></i><span> 我的订单</span></h2>
+        <h2>
+          <router-link to="/home">首页</router-link>
+           <i class="el-icon-arrow-right"></i><span> 我的订单</span></h2>
       </div>
       <div class="chosetype">
         <table>
@@ -158,4 +160,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+a{
+  text-decoration: none;
+}
+</style>
